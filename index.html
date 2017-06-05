@@ -1,0 +1,1017 @@
+
+
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+ 
+  <title>Tic Tac Toe Game</title>
+   <link href="https://fonts.googleapis.com/css?family=Comfortaa|Poiret+One" rel="stylesheet"> 
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+
+      <style>
+      body{
+  font-family: 'Poiret One', cursive;
+  padding-top:5%;
+  background-color:black;
+  color:white;
+  font-weight:bold;
+  padding-bottom:5%;
+}
+
+*{
+  /*border:1px solid black;*/
+}
+.frame{
+   min-width:390px;
+}
+.high{
+  color:red;
+}
+.turn{
+  margin:auto;
+  font-size:20px;
+  background-color:rgba(255, 255, 0, 0.63);
+  text-align:center;
+  position:absolute;
+  width:200px;
+  top:-33px;
+  left:50%;
+  transition: all 0.3s ease;
+  border:1px solid black;
+}
+
+.svg-brd{
+  width: 365px;
+margin: auto;
+}
+
+svg{
+  margin:auto;
+}
+.ai{
+  margin:auto;
+  font-size:20px;
+  background-color:rgba(255, 0, 0, 0.69);
+  text-align:center;
+  position:absolute;
+  width:200px;
+  top:-33px;
+  right:50%;
+  transition: all 0.3s ease;
+  border:1px solid black;
+}
+.fixer{
+  height:500px;
+  padding-top:30px;
+}
+.p1-turn{
+  margin:auto;
+  font-size:20px;
+  background-color:rgba(255, 255, 0, 0.63);;
+  text-align:center;
+  position:absolute;
+  width:200px;
+  top:-33px;
+  right:50%;
+  transition: all 0.3s ease;
+  border:1px solid black;
+}
+.p2-turn{
+  margin:auto;
+  font-size:20px;
+  background-color:rgba(255, 0, 0, 0.69);
+  text-align:center;
+  position:absolute;
+  width:200px;
+  top:-33px;
+  left:50%;
+  transition: all 0.3s ease;
+  border:1px solid black;
+}
+
+.pl:hover{
+  cursor:pointer;
+}
+
+.board{
+ position: relative;
+width: 365px;
+margin: auto;
+top: -400px;
+}
+
+table{
+    margin: auto;
+    position: relative;
+    top:27px;
+}
+
+td{
+    min-width: 121px;
+height: 121px;
+text-align: center;
+font-size: 55px;
+font-weight: bold;
+}
+.img-container{
+  text-align:center;
+}
+
+.players{
+  color:black;
+       position: relative;
+    margin: auto;
+    top:-267px;
+    /* top: 67px; */
+    /* left: 74px; */
+    text-align: center;
+    width: 341px;
+    font-size: 32px;
+    padding: 12px;
+    background-color: rgba(79, 217, 171, 0.82);
+    border: 5px solid rgba(14, 162, 14, 0.46);
+  display:none;
+}
+
+.info{
+  color:black;
+    position: relative;
+    margin: auto;
+    top:-233px;
+    /* top: 67px; */
+    /* left: 74px; */
+    text-align: center;
+    width: 341px;
+    font-size: 32px;
+    padding: 12px;
+    background-color: rgba(79, 217, 171, 0.82);
+    border: 5px solid rgba(14, 162, 14, 0.46);
+}
+.won{
+  color:black;
+    position: relative;
+    margin: auto;
+    top:-270px;
+    /* top: 67px; */
+    /* left: 74px; */
+    text-align: center;
+    width: 341px;
+    font-size: 32px;
+    padding: 12px;
+    background-color: rgba(79, 217, 171, 0.82);
+    border: 5px solid rgba(14, 162, 14, 0.46);
+  display:none;
+}
+.p1won{
+  color:black;
+    position: relative;
+    margin: auto;
+    top:-270px;
+    /* top: 67px; */
+    /* left: 74px; */
+    text-align: center;
+    width: 341px;
+    font-size: 32px;
+    padding: 12px;
+    background-color: rgba(79, 217, 171, 0.82);
+    border: 5px solid rgba(14, 162, 14, 0.46);
+  display:none;
+}
+.p2won{
+  color:black;
+    position: relative;
+    margin: auto;
+    top:-270px;
+    /* top: 67px; */
+    /* left: 74px; */
+    text-align: center;
+    width: 341px;
+    font-size: 32px;
+    padding: 12px;
+    background-color: rgba(79, 217, 171, 0.82);
+    border: 5px solid rgba(14, 162, 14, 0.46);
+  display:none;
+}
+
+.draw{
+  color:black;
+       position: relative;
+    margin: auto;
+    
+    /* top: 67px; */
+    /* left: 74px; */
+  top:-270px;
+    text-align: center;
+    width: 341px;
+    font-size: 32px;
+    padding: 12px;
+    background-color: rgba(79, 217, 171, 0.82);
+    border: 5px solid rgba(14, 162, 14, 0.46);
+    display:none;
+}
+.pl-draw{
+  color:black;
+       position: relative;
+    margin: auto;
+    
+    /* top: 67px; */
+    /* left: 74px; */
+  top:-270px;
+    text-align: center;
+    width: 341px;
+    font-size: 32px;
+    padding: 12px;
+    background-color: rgba(79, 217, 171, 0.82);
+    border: 5px solid rgba(14, 162, 14, 0.46);
+    display:none;
+}
+
+.select{
+  color:black;
+       position: relative;
+    margin: auto;
+    
+    /* top: 67px; */
+    /* left: 74px; */
+  top:-254px;
+    text-align: center;
+    width: 341px;
+    font-size: 32px;
+    padding: 12px;
+    background-color: rgba(79, 217, 171, 0.82);
+    border: 5px solid rgba(14, 162, 14, 0.46);
+    display:none;
+}
+
+.player-select{
+  color:black;
+       position: relative;
+    margin: auto;
+    
+    /* top: 67px; */
+    /* left: 74px; */
+  top:-221px;
+    text-align: center;
+    width: 341px;
+    font-size: 32px;
+    padding: 12px;
+    background-color: rgba(79, 217, 171, 0.82);
+    border: 5px solid rgba(14, 162, 14, 0.46);
+    display:none;
+}
+
+
+.pl{
+  display:inline-block;
+  width: 200px;
+      font-size: 23px;
+  border: 2px solid rgba(39, 53, 38, 0.63);
+}
+
+.pl-wrap{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 14px;
+  border: 2px solid rgba(39, 53, 38, 0.63);
+}
+    </style>
+
+  
+  
+  
+  
+</head>
+
+<body translate="no" >
+
+  <div class="turn">Your Turn</div>
+<div class="ai">Thinking</div>
+<div class="p1-turn">Player 1 turn</div>
+<div class="p2-turn">Player 2 turn</div>
+
+<div class="container-fluid">
+  
+  <div class="fixer">
+  <div class="svg-brd"><svg width="365px" height="365px" viewBox="0 0  365 365" style="z-index: -1;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet"><rect id="svgEditorBackground" x="0" y="0" width="1170" height="480" style="fill: none; stroke: none;"></rect><line y1="365" y2="0" x2="121" x1="121" id="e1_line" stroke="white" style="stroke-width: 7.01px; fill: none; stroke-opacity: 1;"></line><line y1="121" y2="121" x2="365" x1="0" id="e4_line" stroke="white" style="stroke-opacity: 1; stroke-width: 7.01px; fill: none;"></line><line y1="245" y2="245" x1="365" x2="0" id="e5_line" stroke="white" style="stroke-opacity: 1; stroke-width: 7.01px; fill: none;"></line><line y1="365" y2="0" x2="243" x1="243" id="e2_line" stroke="white" style="stroke-width: 7.01px; fill: none; stroke-opacity: 1;"></line></svg></div>
+  <div class="board text-center">
+    
+    
+    <table style="">
+  <tr>
+    <td class="sq1"></td>
+    <td class="sq2"></td>
+    <td class="sq3"></td>
+  </tr>
+  <tr>
+    <td class="sq4"></td>
+    <td class="sq5"></td>
+    <td class="sq6"></td>
+  </tr>
+  <tr>
+    <td class="sq7"></td>
+    <td class="sq8"></td>
+    <td class="sq9"></td>
+  </tr>
+</table> 
+  
+    <div class="dialogs" style="position:relative; top:-44px;">
+     <div class="info">TIC TAC TOE
+      <div class="pl-wrap">
+      <div class="start pl">START</div>
+      
+      </div>
+    </div>
+    
+    <div class="players">How do you want to play?
+      <div class="pl-wrap">
+      <div class="one pl">One Player</div>
+      <div class="two pl">Two Players</div>
+      </div>
+    </div>
+    
+    <div class="draw">DRAW<br>Play again?
+      <div class="pl-wrap">
+      <div class="d-again pl">Yes</div>
+      <div class="d-not-again pl">No</div>
+      </div>
+    </div>
+    
+    <div class="pl-draw">DRAW<br>Play again?
+      <div class="pl-wrap">
+      <div class="d-pl-again pl">Yes</div>
+      <div class="d-not-again pl">No</div>
+      </div>
+    </div>
+    
+     <div class="select">Select one
+      <div class="pl-wrap">
+      <div class="pl sign cross">X</div>
+      <div class="pl sign zero">O</div>
+      </div>
+    </div>
+    
+    <div class="player-select">Select Player 1 sign
+      <div class="pl-wrap">
+      <div class="pl pl-cross">X</div>
+      <div class="pl pl-zero">O</div>
+      </div>
+    </div>
+    
+    <div class="won">You Lost!<br>Try again?
+      <div class="pl-wrap">
+      <div class="d-again pl">Yes</div>
+      <div class="d-not-again pl">No</div>
+      </div>
+    </div>
+    
+    <div class="p1won">Player 1 WON!<br>Play again?
+      <div class="pl-wrap">
+      <div class="pl-again pl">Yes</div>
+      <div class="pl-not-again pl">No</div>
+      </div>
+    </div>
+    
+    <div class="p2won">Player 2 WON!<br>Play again?
+      <div class="pl-wrap">
+      <div class="pl-again pl">Yes</div>
+      <div class="pl-not-again pl">No</div>
+      </div>
+    </div>
+    </div>
+    
+  </div>
+  </div>
+  
+  <div class="footer text-center" >Created By Supun Manathunga</div>
+  
+
+
+
+</div>
+  
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+    <script>
+    $(document).ready(function() {
+  //start();
+  var AIFirstStart = 1;
+  var userSign = 0;
+  var p1Sign = 0;
+  var p2mode = false;
+  var firstMove = true;
+
+  $(".start").on("click", function() {
+    $(".info").css("display", "none");
+    $(".players").css("display", "block");
+  });
+  $(".one").on("click", function() {
+    $(".players").css("display", "none");
+    $(".select").css("display", "block");
+    //firstRun();
+  });
+  $(".two").on("click", function() {
+    p2mode = true;
+    console.log("p2mode: " + p2mode);
+    $(".players").css("display", "none");
+    $(".player-select").css("display", "block");
+  });
+
+  $(".pl-cross").on("click", function() {
+    $(".player-select").css("display", "none");
+    p1Sign = 1;
+    firstRun_2p();
+  });
+  $(".pl-zero").on("click", function() {
+    $(".player-select").css("display", "none");
+    p1Sign = 0;
+    firstRun_2p();
+  });
+
+  $(".cross").on("click", function() {
+    userSign = 1;
+  });
+  $(".zero").on("click", function() {
+    userSign = 0;
+  });
+
+  $(".sign").on("click", function() {
+    //console.log("user sign: " + userSign);
+    $(".select").css("display", "none");
+    firstRun();
+  });
+
+  $(".d-again").on("click", function() {
+    $(".draw, .won").css("display", "none");
+    //$(".won").css("display", "none");
+    $("td").html("");
+    $(".select").css("display", "block");
+    //setTimeout(firstRun, 200);
+  });
+
+  $(".d-pl-again").on("click", function() {
+    $(".pl-draw").css("display", "none");
+    $("td").html("");
+    $(".player-select").css("display", "block");
+    //setTimeout(firstRun, 200);
+  });
+
+  $(".d-not-again").on("click", function() {
+    $(".pl-draw, .draw, .won").css("display", "none");
+    // $(".draw").css("display", "none");
+    // $(".won").css("display", "none");
+    $(".info").css("display", "block");
+  });
+
+  $(".pl-again").on("click", function() {
+    $(".p1won, .p2won").css("display", "none");
+    //$(".p2won").css("display", "none");
+    $(".player-select").css("display", "block");
+  });
+
+  $(".pl-not-again").on("click", function() {
+    $(".p1won, .p2won").css("display", "none");
+    //$(".p2won").css("display", "none");
+    $(".info").css("display", "block");
+  });
+
+  function pop_user() {
+    $(".turn").css("top", "0");
+  }
+
+  function pop_ai() {
+    $(".ai").css("top", "0");
+    setTimeout(function() {
+      $(".ai").css("top", "-33px");
+    }, 1000);
+  }
+
+  function removeHigh() {
+    $("[class^='sq']").removeClass("high animated tada");
+  }
+
+  function firstRun() {
+    firstMove = true;
+    unbind();
+    p2mode = false;
+    removeHigh();
+    $("td").html("");
+    initiateBoard();
+    if (!AIFirstStart) {
+      AIFirstStart = 1;
+      pop_ai();
+      setTimeout(onePlayer, 300);
+    } else {
+      AIFirstStart = 0;
+      pop_user();
+      onePlayer();
+    }
+  }
+  function firstRun_2p() {
+    unbind();
+    p2mode = true;
+    removeHigh();
+    $("td").html("");
+    initiateBoard();
+    twoPlayers();
+  }
+
+  function unbind() {
+    $("[class^='sq']").unbind();
+  }
+
+  function twoPlayers() {
+    if (isP1Turn(board_0)) {
+      $(".p1-turn").css("top", "0");
+    } else {
+      $(".p2-turn").css("top", "0");
+    }
+    getInput();
+  }
+
+  function onePlayer() {
+    if (isAITurn(board_0)) {
+      if (firstMove && AIFirstStart) {
+        board_0[1][1] = 2;
+        firstMove = false;
+
+        setTimeout(function() {
+          update(board_0);
+          printBoard(board_0);
+          if (check(board_0)) {
+            onePlayer();
+          }
+        }, 1000);
+      } else {
+        var move = play(board_0);
+
+        board_0[move[0]][move[1]] = 2;
+        update(board_0);
+        printBoard(board_0);
+        if (check(board_0)) {
+          onePlayer();
+        }
+      }
+    } else {
+      pop_user();
+      getInput();
+    }
+  }
+
+  var board_0 = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+  var winner;
+
+  // console.log(play(board_0));
+
+  function play(board) {
+    if (isOver(board)) {
+      return 2;
+    }
+    if (isFull(board)) {
+      return 0;
+    }
+
+    var arr = getSlots(board);
+    var score = [];
+
+    arr.forEach(function(pos) {
+      score.push(minimax(fill(board, pos)));
+    });
+    //   console.log("score::::");
+    //   console.log(score);
+    var temp = -1000;
+    var ind = 0;
+    score.forEach(function(val, index) {
+      if (val > temp) {
+        temp = val;
+        ind = index;
+      }
+    });
+
+    if (arr[ind] == undefined) {
+      // alert("draw");
+      return 0;
+    }
+    //board[arr[ind][0]][arr[ind][1]] = 2;
+    //console.log("FINAL: " + arr[ind]);
+    return arr[ind];
+
+    //console.log(arr2);
+    //return arr[ind];
+  }
+  function printBoard(board) {
+    console.log(board[0][0] + " " + board[0][1] + " " + board[0][2]);
+    console.log(board[1][0] + " " + board[1][1] + " " + board[1][2]);
+    console.log(board[2][0] + " " + board[2][1] + " " + board[2][2]);
+    console.log("");
+  }
+  function isOver(board) {
+    for (var i = 0; i < 3; i++) {
+      if (
+        board[i][0] == board[i][1] &&
+        board[i][1] == board[i][2] &&
+        board[i][0] != 0
+      ) {
+        winner = board[i][0];
+        return true;
+      }
+    }
+    for (var i = 0; i < 3; i++) {
+      if (
+        board[0][i] == board[1][i] &&
+        board[1][i] == board[2][i] &&
+        board[0][i] != 0
+      ) {
+        winner = board[0][i];
+        return true;
+      }
+    }
+    if (
+      board[0][0] == board[1][1] &&
+      board[1][1] == board[2][2] &&
+      board[0][0] != 0
+    ) {
+      winner = board[0][0];
+      return true;
+    }
+    if (
+      board[0][2] == board[1][1] &&
+      board[1][1] == board[2][0] &&
+      board[0][2] != 0
+    ) {
+      winner = board[0][2];
+      return true;
+    }
+    return false;
+  }
+  function isFull(board) {
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 3; j++) {
+        if (board[i][j] == 0) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  function initiateBoard() {
+    board_0 = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+  }
+  function getSlots(board) {
+    var arr = [];
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 3; j++) {
+        if (board[i][j] == 0) {
+          arr.push([i, j]);
+        }
+      }
+    }
+    return arr;
+  }
+  function fill(board, position) {
+    var ret = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+    for (var i = 0; i < 3; i++) {
+      for (j = 0; j < 3; j++) {
+        ret[i][j] = board[i][j];
+      }
+    }
+
+    if (isAITurn(board)) {
+      //   console.log("AI MOVES");
+      AITurn = false;
+      var i = position[0];
+      var j = position[1];
+      ret[i][j] = 2;
+    } else {
+      //   console.log("PLAYER MOVES");
+      AITurn = true;
+      ret[position[0]][position[1]] = 1;
+    }
+    return ret;
+  }
+  function isAITurn(board) {
+    var twos = 0;
+    var ones = 0;
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 3; j++) {
+        if (board[i][j] == 1) {
+          ones++;
+        } else if (board[i][j] == 2) {
+          twos++;
+        }
+      }
+    }
+    if (ones > twos) {
+      return true;
+    }
+    if (twos > ones) {
+      return false;
+    }
+    if (AIFirstStart) {
+      return true;
+    }
+  }
+
+  function isP1Turn(board) {
+    var twos = 0;
+    var ones = 0;
+    for (var i = 0; i < 3; i++) {
+      for (var j = 0; j < 3; j++) {
+        if (board[i][j] == 1) {
+          ones++;
+        } else if (board[i][j] == 2) {
+          twos++;
+        }
+      }
+    }
+    if (ones > twos) {
+      return false;
+    }
+    if (twos > ones) {
+      return true;
+    }
+    return true;
+  }
+  function minimax(board) {
+    if (isOver(board)) {
+      //    console.log("terminal");
+      if (winner == 1) {
+        return -10;
+      } else {
+        return 10;
+      }
+    } else if (isFull(board)) {
+      return 0;
+    } else {
+      var scores = [];
+      if (!isFull(board)) {
+        var slots = getSlots(board);
+        slots.forEach(function(pos) {
+          //      console.log(pos);
+          scores.push(minimax(fill(board, pos)));
+        });
+      }
+      //console.log("current arr " + scores);
+      if (isAITurn(board)) {
+        var test = -10000;
+        scores.forEach(function(val) {
+          if (val > test) {
+            test = val;
+          }
+        });
+        //    console.log("returning: " + test);
+        return test;
+      } else {
+        var test = 10000;
+        scores.forEach(function(val) {
+          if (val < test) {
+            test = val;
+          }
+        });
+        //   console.log("returning: " + test);
+        return test;
+      }
+    }
+  }
+
+  function update(board) {
+    console.log("Updating");
+    if (!p2mode) {
+      if (!userSign) {
+        for (var i = 0; i < 3; i++) {
+          for (var j = 0; j < 3; j++) {
+            if (board[i][j] == 1) {
+              var cls = ".sq" + (i * 3 + j + 1).toString();
+              $(cls).html("O");
+            }
+            if (board[i][j] == 2) {
+              var cls = ".sq" + (i * 3 + j + 1).toString();
+              $(cls).html("X");
+            }
+          }
+        }
+      } else if (userSign) {
+        for (var i = 0; i < 3; i++) {
+          for (var j = 0; j < 3; j++) {
+            if (board[i][j] == 1) {
+              var cls = ".sq" + (i * 3 + j + 1).toString();
+              $(cls).html("X");
+            }
+            if (board[i][j] == 2) {
+              var cls = ".sq" + (i * 3 + j + 1).toString();
+              $(cls).html("O");
+            }
+          }
+        }
+      }
+    } else if (p2mode) {
+      if (!p1Sign) {
+        for (var i = 0; i < 3; i++) {
+          for (var j = 0; j < 3; j++) {
+            if (board[i][j] == 1) {
+              var cls = ".sq" + (i * 3 + j + 1).toString();
+              $(cls).html("O");
+            }
+            if (board[i][j] == 2) {
+              var cls = ".sq" + (i * 3 + j + 1).toString();
+              $(cls).html("X");
+            }
+          }
+        }
+      } else if (p1Sign) {
+        for (var i = 0; i < 3; i++) {
+          for (var j = 0; j < 3; j++) {
+            if (board[i][j] == 1) {
+              var cls = ".sq" + (i * 3 + j + 1).toString();
+              $(cls).html("X");
+            }
+            if (board[i][j] == 2) {
+              var cls = ".sq" + (i * 3 + j + 1).toString();
+              $(cls).html("O");
+            }
+          }
+        }
+      }
+    }
+  }
+
+  function highlight(board) {
+    for (var i = 0; i < 3; i++) {
+      if (
+        board[i][0] == board[i][1] &&
+        board[i][1] == board[i][2] &&
+        board[i][0] != 0
+      ) {
+        if (i == 0) {
+          $(".sq1").addClass("high animated tada");
+          $(".sq2").addClass("high animated tada");
+          $(".sq3").addClass("high animated tada");
+        }
+        if (i == 1) {
+          $(".sq4").addClass("high animated tada");
+          $(".sq5").addClass("high animated tada");
+          $(".sq6").addClass("high animated tada");
+        }
+        if (i == 2) {
+          $(".sq7").addClass("high animated tada");
+          $(".sq8").addClass("high animated tada");
+          $(".sq9").addClass("high animated tada");
+        }
+      }
+    }
+    for (var i = 0; i < 3; i++) {
+      if (
+        board[0][i] == board[1][i] &&
+        board[1][i] == board[2][i] &&
+        board[0][i] != 0
+      ) {
+        if (i == 0) {
+          $(".sq1").addClass("high animated tada");
+          $(".sq4").addClass("high animated tada");
+          $(".sq7").addClass("high animated tada");
+        }
+        if (i == 1) {
+          $(".sq2").addClass("high animated tada");
+          $(".sq5").addClass("high animated tada");
+          $(".sq8").addClass("high animated tada");
+        }
+        if (i == 2) {
+          $(".sq3").addClass("high animated tada");
+          $(".sq6").addClass("high animated tada");
+          $(".sq9").addClass("high animated tada");
+        }
+      }
+    }
+    if (
+      board[0][0] == board[1][1] &&
+      board[1][1] == board[2][2] &&
+      board[0][0] != 0
+    ) {
+      $(".sq1").addClass("high animated tada");
+      $(".sq5").addClass("high animated tada");
+      $(".sq9").addClass("high animated tada");
+    }
+    if (
+      board[0][2] == board[1][1] &&
+      board[1][1] == board[2][0] &&
+      board[0][2] != 0
+    ) {
+      $(".sq3").addClass("high animated tada");
+      $(".sq5").addClass("high animated tada");
+      $(".sq7").addClass("high animated tada");
+    }
+    return false;
+  }
+  function check(board) {
+    if (isOver(board)) {
+      if (winner == 1) {
+        highlight(board);
+        setTimeout(function() {
+          $(".p1won").css("display", "block");
+        }, 1000);
+      } else {
+        if (!p2mode) {
+          console.log("I won --2");
+          highlight(board);
+          setTimeout(function() {
+            $(".won").css("display", "block");
+          }, 1000);
+        } else if (p2mode) {
+          console.log("Player 2 won");
+          highlight(board);
+          setTimeout(function() {
+            $(".p2won").css("display", "block");
+          }, 1000);
+        }
+        return 0;
+      }
+      // board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+
+      return 0;
+    }
+    if (isFull(board)) {
+      console.log("Draw -- 2");
+      if (!p2mode) {
+        $(".draw").css("display", "block");
+        setTimeout(function() {
+          initiateBoard();
+          update(board_0);
+          //$("td").html("");
+        }, 1000);
+        return 0;
+      } else if (p2mode) {
+        $(".pl-draw").css("display", "block");
+        setTimeout(function() {
+          initiateBoard();
+          update(board_0);
+          //$("td").html("");
+        }, 1000);
+        return 0;
+      }
+    }
+    return 1;
+  }
+  function getInput() {
+    if (!p2mode) {
+      console.log("Your Turn");
+      $("[class^='sq']").on("click", function() {
+        if ($(this).html() == "") {
+          var n = $(this).attr("class").split("q")[1];
+          var j = (n - 1) % 3;
+          var i = parseInt((n - 1) / 3);
+          board_0[i][j] = 1;
+          update(board_0);
+          printBoard(board_0);
+          $(".turn").css("top", "-33px");
+          if (check(board_0)) {
+            pop_ai();
+            setTimeout(function() {
+              onePlayer();
+            }, 1000);
+          }
+        }
+      });
+    }
+    if (p2mode) {
+      console.log("inp2mode");
+      var pl = isP1Turn(board_0);
+      console.log("pl: ");
+      console.log(pl);
+      $("[class^='sq']").on("click", function() {
+        if ($(this).html() == "") {
+          var n = $(this).attr("class").split("q")[1];
+          var j = (n - 1) % 3;
+          var i = parseInt((n - 1) / 3);
+
+          if (isP1Turn(board_0)) {
+            board_0[i][j] = 1;
+          } else {
+            board_0[i][j] = 2;
+          }
+          update(board_0);
+          printBoard(board_0);
+          $(".p1-turn, .p2-turn").css("top", "-33px");
+          //$(".p2-turn").css("top", "-33px");
+          if (check(board_0)) {
+            //pop_p1();
+            setTimeout(function() {
+              twoPlayers();
+            }, 1000);
+          }
+        }
+      });
+    }
+  }
+});
+  </script>
+
+  
+  
+
+</body>
+</html>
+ 
